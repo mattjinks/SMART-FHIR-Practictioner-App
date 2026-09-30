@@ -1,0 +1,84 @@
+<div class="title-container">
+  <h2
+  >
+    PATIENT MEDICATIONS 
+  </h2>
+</div>
+
+@if (loading()) {
+
+  <p>Loading medications...</p>
+
+} @else if (errorMessage()) {
+
+  <p>{{ errorMessage() }}</p>
+
+} @else {
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    class="medications-table"
+  >
+
+    <!-- Medication Name -->
+    <ng-container matColumnDef="medication">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="header">
+        MEDICATION
+      </th>
+
+      <td mat-cell *matCellDef="let medication">
+        {{ getMedicationName(medication) }}
+      </td>
+
+    </ng-container>
+
+
+    <!-- Instructions -->
+    <ng-container matColumnDef="instructions" >
+
+      <th mat-header-cell *matHeaderCellDef class="header">
+        INSTRUCTIONS
+      </th>
+
+      <td mat-cell *matCellDef="let medication">
+        {{ getMedicationInstructions(medication) }}
+      </td>
+
+    </ng-container>
+
+
+    <!-- Authored Date -->
+    <ng-container matColumnDef="authoredOn">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="header"> 
+        WRITTEN DATE
+      </th>
+
+      <td mat-cell *matCellDef="let medication">
+        @if (medication.authoredOn) {
+          {{ medication.authoredOn | date:'MMM d, y' }}
+        } @else {
+          —
+        }
+      </td>
+
+    </ng-container>
+
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns">
+    </tr>
+
+    <tr
+      mat-row
+      (click)="openMedicationDetails(row)"
+      *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+
+  </table>
+
+}

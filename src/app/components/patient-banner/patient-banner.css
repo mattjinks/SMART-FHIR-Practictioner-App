@@ -1,0 +1,95 @@
+:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.patient-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  padding: 16px 24px;
+
+  border-radius: 12px;
+
+  background-color: lightgrey;
+}
+
+.patient-avatar {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.patient-avatar mat-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+}
+
+.patient-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.patient-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  color: var(--mat-sys-on-surface);
+}
+
+.patient-demographics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 16px;
+
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 0.875rem;
+}
+
+.detail mat-icon {
+  width: 18px;
+  height: 18px;
+
+  font-size: 18px;
+}
+
+.patient-id {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.loading-banner {
+  flex-direction: row;
+  align-items: center;
+
+  gap: 12px;
+}

@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  padding: 24px;
+}
+
+.medications-table {
+  width: 100%;
+}
+
+.mat-column-medication {
+  width: 20%;
+}
+
+.header {
+  font-size: large;
+}
+
+.mat-column-instructions {
+  width: 45%;
+}
+
+.mat-column-authoredOn {
+  width: 15%;
+}
+
+.new-prescription-container {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+tr[mat-row] {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+tr[mat-row]:hover {
+  background-color: var(--mat-sys-surface-container);
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+  color: var(--mat-sys-on-primary-container);
+}

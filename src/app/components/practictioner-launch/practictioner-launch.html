@@ -1,0 +1,25 @@
+<!-- @if (smartSession(); as session) {
+
+  @if (session.need_patient_banner) {
+    <app-patient-banner
+      [accessToken]="session.access_token"
+      [baseUrl]="baseUrl()"
+      [patientId]="session.patient">
+    </app-patient-banner>
+  }
+
+  @if (session.patient && baseUrl()) {
+    <app-observations
+      [accessToken]="session.access_token"
+      [baseUrl]="baseUrl()"
+      [patientId]="session.patient">
+    </app-observations>
+
+    <app-medications
+      [accessToken]="session.access_token"
+      [baseUrl]="baseUrl()"
+      [patientId]="session.patient">
+    </app-medications>
+  }
+
+} -->

@@ -1,0 +1,51 @@
+@if (patientResource(); as patient) {
+  <mat-card class="patient-banner">
+
+    <div class="patient-avatar">
+      <mat-icon>person</mat-icon>
+    </div>
+
+    <div class="patient-info">
+
+      <div class="patient-name">
+        {{ patient.name?.[0]?.given?.[0] }}
+        {{ patient.name?.[0]?.family }}
+      </div>
+
+      <div class="patient-demographics">
+
+        @if (patient.birthDate) {
+          <span class="detail">
+            <b>Birth Date:</b>
+            {{ patient.birthDate }}
+          </span>
+        }
+
+        @if (patient.gender) {
+          <span class="detail">
+            <b>Gender:</b>
+            {{ patient.gender }}
+          </span>
+        }
+
+        @if (patient.id) {
+          <span class="detail patient-id">
+            <b>ID:</b>
+            {{ patient.id }}
+          </span>
+        }
+
+      </div>
+
+    </div>
+
+  </mat-card>
+
+} @else {
+
+  <mat-card class="patient-banner loading-banner">
+    <mat-spinner diameter="24"></mat-spinner>
+    <span>Loading patient...</span>
+  </mat-card>
+
+}

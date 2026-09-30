@@ -1,0 +1,10 @@
+.medication-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.label {
+  font-weight: 600;
+}

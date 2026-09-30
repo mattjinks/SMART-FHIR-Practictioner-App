@@ -1,0 +1,131 @@
+<div class="add-vital-container">
+  <button
+    mat-flat-button
+    type="button"
+    (click)="openVitalForm()"
+  >
+    Record Vital
+  </button>
+</div>
+
+@if (showCreateVitalForm()) {
+
+  @if (
+    baseUrl &&
+    accessToken &&
+    patientId
+  ) {
+
+    <app-create-vital-form
+      [baseUrl]="baseUrl"
+      [accessToken]="accessToken"
+      [patientId]="patientId"
+      (vitalCreated)="onVitalCreated()"
+      (cancel)="closeVitalForm()"
+    />
+
+    <br/>
+
+  }
+
+}
+
+@if (loading()) {
+
+  <p>Loading observations...</p>
+
+} @else if (errorMessage()) {
+
+  <p>{{ errorMessage() }}</p>
+
+} @else {
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    class="observations-table"
+  >
+
+    <!-- Observation Name -->
+    <ng-container matColumnDef="observation">
+
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="header"
+      >
+        OBSERVATION
+      </th>
+
+      <td
+        mat-cell
+        *matCellDef="let observation"
+      >
+        {{ getObservationName(observation) }}
+      </td>
+
+    </ng-container>
+
+
+    <!-- Value -->
+    <ng-container matColumnDef="value">
+
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="header"
+      >
+        VALUE
+      </th>
+
+      <td
+        mat-cell
+        *matCellDef="let observation"
+      >
+        {{ getObservationValue(observation) }}
+      </td>
+
+    </ng-container>
+
+
+    <!-- Date -->
+    <ng-container matColumnDef="date">
+
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="header"
+      >
+        DATE
+      </th>
+
+      <td
+        mat-cell
+        *matCellDef="let observation"
+      >
+        @if (getObservationDate(observation); as date) {
+          {{ date | date:'MMM d, y' }}
+        } @else {
+          —
+        }
+      </td>
+
+    </ng-container>
+
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns">
+    </tr>
+
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+
+  </table>
+
+}

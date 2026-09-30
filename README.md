@@ -1,59 +1,69 @@
-# CernerPractitionerApp
+# SMART on FHIR Practitioner App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.7.
+**Demo**: [Add demo video link]
 
-## Development server
+## Description
 
-To start a local development server, run:
+This project is a practitioner-facing SMART on FHIR web application designed to launch within the Cerner EHR sandbox. It uses the SMART App Launch framework and OAuth 2.0 to receive the active patient context, authorize access, and interact securely with clinical data through FHIR APIs.
 
-```bash
-ng serve
-```
+The application allows practitioners to:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- View the selected patient's demographic information.
+- Retrieve and display vital signs from FHIR `Observation` resources.
+- Retrieve and display medications from `MedicationRequest` resources.
+- Create new vital-sign entries for the selected patient.
 
-## Code scaffolding
+![Application screenshot](Application-Screenshot.png)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The authorization flow begins when Cerner launches the application with `iss` and `launch` parameters. The application retrieves the EHR's SMART configuration, redirects the practitioner to the authorization endpoint, exchanges the returned authorization code for an access token, and uses that token for authorized FHIR requests.
 
-```bash
-ng generate component component-name
-```
+![SMART on FHIR architecture](cerner-fhir-project-flow.png)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Technologies Used
 
-```bash
-ng generate --help
-```
+- **Angular**
+- **TypeScript**
+- **SMART on FHIR**
+- **OAuth 2.0**
+- **HL7 FHIR R4**
+- **Cerner SMART on FHIR Sandbox**
 
-## Building
+## FHIR Resources
 
-To build the project run:
+- **Patient**: Displays patient demographics and identifying information.
+- **Observation**: Retrieves vital signs and submits new vital-sign entries.
+- **MedicationRequest**: Retrieves the patient's prescribed medications.
 
-```bash
-ng build
-```
+## Authentication and Data Flow
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+1. Cerner launches the application with the FHIR server URL and a launch token.
+2. The application retrieves the EHR's SMART configuration.
+3. The practitioner is redirected through the SMART OAuth 2.0 authorization flow.
+4. The application exchanges the authorization code for an access token and patient context.
+5. The application uses the token to request permitted FHIR resources.
+6. Patient demographics, vital signs, and medications are displayed in the application.
+7. Practitioners can submit new vital-sign observations to the FHIR server.
 
-## Running unit tests
+## Running the Project
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+1. Clone the repository.
+2. Install dependencies:
 
-```bash
-ng test
-```
+   ```bash
+   npm install
+   ```
 
-## Running end-to-end tests
+3. Configure the application's client ID, redirect URI, scopes, and Cerner sandbox launch settings.
+4. Start the Angular development server:
 
-For end-to-end (e2e) testing, run:
+   ```bash
+   ng serve
+   ```
 
-```bash
-ng e2e
-```
+5. Launch the application through the configured Cerner SMART on FHIR sandbox workflow.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+> The Cerner sandbox contains fictional test patients and clinical data. No real patient information should be used in this project.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Feel free to contribute or reach out with any feedback or questions.

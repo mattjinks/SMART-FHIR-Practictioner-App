@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>
+  Medication Details
+</h2>
+
+<mat-dialog-content>
+
+  <div class="medication-detail">
+    <span class="label">Medication</span>
+    <span>{{ getMedicationName() }}</span>
+  </div>
+
+  <div class="medication-detail">
+    <span class="label">Instructions</span>
+    <span>{{ getInstructions() }}</span>
+  </div>
+
+  <div class="medication-detail">
+    <span class="label">Written Date</span>
+
+    <span>
+      @if (medication.authoredOn) {
+        {{ medication.authoredOn | date:'MMM d, y' }}
+      } @else {
+        —
+      }
+    </span>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button
+    mat-button
+    mat-dialog-close>
+    Close
+  </button>
+</mat-dialog-actions>

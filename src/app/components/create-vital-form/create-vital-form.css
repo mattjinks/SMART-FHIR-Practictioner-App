@@ -1,0 +1,29 @@
+.vital-form-card {
+  padding: 24px;
+}
+
+.vital-form-card h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.vital-form-card form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.error-message {
+  width: 100%;
+  text-align: center;
+}

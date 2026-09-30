@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  padding: 24px;
+}
+
+.header {
+  font-size: large;
+}
+
+.add-vital-container {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.observations-table {
+  width: 100%;
+}
+
+.mat-column-observation {
+  width: 35%;
+}
+
+.mat-column-value {
+  width: 40%;
+}
+
+.mat-column-date {
+  width: 25%;
+}

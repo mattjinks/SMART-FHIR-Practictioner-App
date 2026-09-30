@@ -1,0 +1,128 @@
+<mat-card class="vital-form-card">
+
+  <h2>Record Vital</h2>
+
+  <form
+    [formGroup]="vitalForm"
+    (ngSubmit)="submit()"
+  >
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>Vital Type</mat-label>
+
+      <mat-select formControlName="type">
+
+        <mat-option value="heart-rate">
+          Heart Rate
+        </mat-option>
+
+        <mat-option value="respiratory-rate">
+          Respiratory Rate
+        </mat-option>
+
+        <mat-option value="temperature">
+          Body Temperature
+        </mat-option>
+
+        <mat-option value="blood-pressure">
+          Blood Pressure
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    @if (vitalForm.controls.type.value === 'blood-pressure') {
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>Systolic</mat-label>
+
+        <input
+          matInput
+          type="number"
+          formControlName="systolic"
+        >
+
+        <span matTextSuffix>
+          mmHg
+        </span>
+
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>Diastolic</mat-label>
+
+        <input
+          matInput
+          type="number"
+          formControlName="diastolic"
+        >
+
+        <span matTextSuffix>
+          mmHg
+        </span>
+
+      </mat-form-field>
+
+    } @else {
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>Value</mat-label>
+
+        <input
+          matInput
+          type="number"
+          formControlName="value"
+        >
+
+        <span matTextSuffix>
+          {{ getSelectedUnit() }}
+        </span>
+
+      </mat-form-field>
+
+    }
+
+
+    @if (errorMessage()) {
+
+      <p class="error-message">
+        {{ errorMessage() }}
+      </p>
+
+    }
+
+
+    <div class="actions">
+
+      <button
+        mat-button
+        type="button"
+        (click)="cancel.emit()"
+      >
+        Cancel
+      </button>
+
+      <button
+        matButton="outlined"
+        type="submit"
+        [disabled]="submitting()"
+      >
+
+        @if (submitting()) {
+          Saving...
+        } @else {
+          Save
+        }
+      </button>
+    </div>
+    <br/>
+  </form>
+
+</mat-card>
