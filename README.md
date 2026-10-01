@@ -1,6 +1,6 @@
 # SMART on FHIR Practitioner App
 
-**Demo**: [Add demo video link]
+**Demo**: https://youtu.be/24yFwA0FIA0?si=1kTFtTV7d0QuFCvc
 
 ## Description
 
@@ -13,7 +13,6 @@ The application allows practitioners to:
 - Retrieve and display medications from `MedicationRequest` resources.
 - Create new vital-sign entries for the selected patient.
 
-![Application screenshot](Application-Screenshot.png)
 
 The authorization flow begins when Cerner launches the application with `iss` and `launch` parameters. The application retrieves the EHR's SMART configuration, redirects the practitioner to the authorization endpoint, exchanges the returned authorization code for an access token, and uses that token for authorized FHIR requests.
 
@@ -37,7 +36,7 @@ The authorization flow begins when Cerner launches the application with `iss` an
 ## Authentication and Data Flow
 
 1. Cerner launches the application with the FHIR server URL and a launch token.
-2. The application retrieves the EHR's SMART configuration.
+2. The application retrieves the SMART on Cerner configuration.
 3. The practitioner is redirected through the SMART OAuth 2.0 authorization flow.
 4. The application exchanges the authorization code for an access token and patient context.
 5. The application uses the token to request permitted FHIR resources.
